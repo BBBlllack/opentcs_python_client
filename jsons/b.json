@@ -1,0 +1,74 @@
+[
+  {
+    "operation": "MOV",
+    "instruction": {
+      "finalMovement": "false",
+      "finalOperation": "MOVE",
+      "transportOrder": "TransportOrder{name=Move-01JV72E24QZ2TQBM60VEKA9H1G, wrappingSequence=null, type=-, state=BEING_PROCESSED, intendedVehicle=TCSObjectReference{referentClass=class org.opentcs.data.model.Vehicle, name=Vehicle-01}, processingVehicle=TCSObjectReference{referentClass=class org.opentcs.data.model.Vehicle, name=Vehicle-01}, creationTime=2025-05-14T09:36:26.775513800Z, deadline=2025-05-14T09:36:26.773515500Z, finishedTime=+1000000000-12-31T23:59:59.999999999Z, dispensable=false, peripheralReservationToken=null, dependencies=[], driveOrders=[Route{steps=[Point-0006, Point-0009], costs=8725} -> Point-0009:MOVE], currentDriveOrderIndex=0, currentRouteStepIndex=-1, properties={}, history=ObjectHistory{entries=[Entry{timestamp=2025-05-14T09:36:26.775513800Z, eventCode=tcs:history:orderCreated, supplement=}, Entry{timestamp=2025-05-14T09:36:26.779513300Z, eventCode=tcs:history:orderAssignedToVehicle, supplement=Vehicle-01}, Entry{timestamp=2025-05-14T09:36:26.779513300Z, eventCode=tcs:history:orderProcVehicleChanged, supplement=Vehicle-01}]}}",
+      "opLocation": "null",
+      "finalDestination": "Point{name=Point-0009, pose=Pose{position=Triple{x=22000, y=-5000, z=0}, orientationAngle=NaN}, type=HALT_POSITION, incomingPaths=[TCSObjectReference{referentClass=class org.opentcs.data.model.Path, name=Point-0008 --- Point-0009}, TCSObjectReference{referentClass=class org.opentcs.data.model.Path, name=Point-0006 --- Point-0009}], outgoingPaths=[TCSObjectReference{referentClass=class org.opentcs.data.model.Path, name=Point-0009 --- Point-0011}], attachedLinks=[], occupyingVehicle=null, vehicleEnvelopes={}, maxVehicleBoundingBox=BoundingBox{length=1000, width=1000, height=1000, referenceOffset=Couple{x=0, y=0}}, layout=org.opentcs.data.model.Point$Layout@42b56934, properties={}, history=ObjectHistory{entries=[]}}",
+      "driveOrder": "Route{steps=[Point-0006, Point-0009], costs=8725} -> Point-0009:MOVE",
+      "step": {
+        "sourcePoint": {
+          "pose": {
+            "position": {
+              "x": 31000,
+              "y": -1000
+            }
+          }
+        },
+        "destinationPoint": {
+          "pose": {
+            "position": {
+              "x": -6000,
+              "y": 26000
+            }
+          }
+        }
+      },
+      "finalDestinationLocation": "null",
+      "operation": "NOP",
+      "properties": "{}"
+    },
+    "message": None,
+    "timestamp": 1747215386890,
+    "others": None,
+    "first_point": None
+  },
+  {
+    "operation": "MOV",
+    "instruction": {
+      "finalMovement": "true",
+      "finalOperation": "MOVE",
+      "transportOrder": "TransportOrder{name=Move-01JV72E24QZ2TQBM60VEKA9H1G, wrappingSequence=null, type=-, state=BEING_PROCESSED, intendedVehicle=TCSObjectReference{referentClass=class org.opentcs.data.model.Vehicle, name=Vehicle-01}, processingVehicle=TCSObjectReference{referentClass=class org.opentcs.data.model.Vehicle, name=Vehicle-01}, creationTime=2025-05-14T09:36:26.775513800Z, deadline=2025-05-14T09:36:26.773515500Z, finishedTime=+1000000000-12-31T23:59:59.999999999Z, dispensable=false, peripheralReservationToken=null, dependencies=[], driveOrders=[Route{steps=[Point-0006, Point-0009], costs=8725} -> Point-0009:MOVE], currentDriveOrderIndex=0, currentRouteStepIndex=-1, properties={}, history=ObjectHistory{entries=[Entry{timestamp=2025-05-14T09:36:26.775513800Z, eventCode=tcs:history:orderCreated, supplement=}, Entry{timestamp=2025-05-14T09:36:26.779513300Z, eventCode=tcs:history:orderAssignedToVehicle, supplement=Vehicle-01}, Entry{timestamp=2025-05-14T09:36:26.779513300Z, eventCode=tcs:history:orderProcVehicleChanged, supplement=Vehicle-01}]}}",
+      "opLocation": "null",
+      "finalDestination": "Point{name=Point-0009, pose=Pose{position=Triple{x=22000, y=-5000, z=0}, orientationAngle=NaN}, type=HALT_POSITION, incomingPaths=[TCSObjectReference{referentClass=class org.opentcs.data.model.Path, name=Point-0008 --- Point-0009}, TCSObjectReference{referentClass=class org.opentcs.data.model.Path, name=Point-0006 --- Point-0009}], outgoingPaths=[TCSObjectReference{referentClass=class org.opentcs.data.model.Path, name=Point-0009 --- Point-0011}], attachedLinks=[], occupyingVehicle=null, vehicleEnvelopes={}, maxVehicleBoundingBox=BoundingBox{length=1000, width=1000, height=1000, referenceOffset=Couple{x=0, y=0}}, layout=org.opentcs.data.model.Point$Layout@42b56934, properties={}, history=ObjectHistory{entries=[]}}",
+      "driveOrder": "Route{steps=[Point-0006, Point-0009], costs=8725} -> Point-0009:MOVE",
+      "step": {
+        "sourcePoint": {
+          "pose": {
+            "position": {
+              "x": 25000,
+              "y": -3000
+            }
+          }
+        },
+        "destinationPoint": {
+          "pose": {
+            "position": {
+              "x": -9000,
+              "y": 23000
+            }
+          }
+        }
+      },
+      "finalDestinationLocation": "null",
+      "operation": "MOVE",
+      "properties": "{}"
+    },
+    "message": None,
+    "timestamp": 1747215389207,
+    "others": None,
+    "first_point": None
+  }
+]
