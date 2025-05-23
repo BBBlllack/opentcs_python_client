@@ -1,11 +1,9 @@
 import rospy
-
+from math import pi
 from geometry_msgs.msg import Twist
 
-import sys, select, termios, tty
-
 speed = 0.2  # 默认移动速度 m/s
-turn = 0.5  # 默认转向速度 rad/s
+turn = 0.5  # 默认转向速度 rad/s, 2*pi = 360° pi/2 = 90°
 x = 0  # 前进后退方向
 th = 0  # 转向/横向移动方向
 target_speed = 0  # 前进后退目标速度
@@ -131,11 +129,11 @@ if __name__ == "__main__":
 
             twist = Twist()  # 创建ROS速度话题变量
 
-            twist.linear.x = control_speed;
-            twist.linear.y = control_HorizonMove;
+            twist.linear.x = control_speed
+            twist.linear.y = control_HorizonMove
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
 
             pub.publish(twist)  # ROS发布速度话题

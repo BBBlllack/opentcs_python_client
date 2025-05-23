@@ -1,7 +1,11 @@
+import os
+# 设置加密启用标志, 小车默认不使用加密
+ENC_ENABLE = os.getenv('ENC_ENABLE') if os.getenv('ENC_ENABLE') != "False" else False
 import socket
 import threading
 import time
-from CryptUtils import DESdecrypt, DESencrpyt, SM4_encrypt, SM4_decrypt
+if ENC_ENABLE:
+    from CryptUtils import DESdecrypt, DESencrpyt, SM4_encrypt, SM4_decrypt
 import json
 import re
 
@@ -13,7 +17,25 @@ BUF_SIZE = 1024 * 10
 ENCR_METHOD = "SM4"
 VEHICLE_NAME = "Vehicle-01"
 RSA_PUB = ""
+# 设置模拟标志, 默认为模拟环境
+SIM_ENV = False if os.getenv("SIM_ENV") else True
+DIR_VEL = [0,1] # 表示对准y方向 [-1,0]对准x负方向
+if not ENC_ENABLE:
+    ENCR_METHOD = "NON"
 
+def print_config():
+    print("=== 系统配置信息 ===")
+    print(f"ENC_ENABLE     : {ENC_ENABLE}")
+    print(f"SIM_ENV        : {SIM_ENV}")
+    print(f"ENCR_METHOD    : {ENCR_METHOD}")
+    print(f"HOST           : {HOST}")
+    print(f"PORT           : {PORT}")
+    print(f"CODE           : {CODE}")
+    print(f"BUF_SIZE       : {BUF_SIZE}")
+    print(f"VEHICLE_NAME   : {VEHICLE_NAME}")
+    print(f"RSA_PUB        : {RSA_PUB if RSA_PUB else '未设置'}")
+    print(f"当前朝向 DIR_VEL: {DIR_VEL}")
+    print("====================\n")
 
 # 小车发送对象
 class ReceiveEntity:
@@ -36,7 +58,6 @@ class ReceiveEntity:
 
 
 first_point = None
-
 
 # 小车接受对象
 class SendEntity:
@@ -145,17 +166,43 @@ def recvMsg(sock: socket.socket):
             dpx_r, dpy_r = data.instruction['step']['destinationPoint']['pose']['position']['x'], \
                 data.instruction['step']['destinationPoint']['pose']['position']['y']
             print(f"{tname} : {data} \n dpx_r: {dpx_r} dpy_r: {dpy_r}")
-            driveVehicleByCommand(data)
+            if not SIM_ENV:
+                driveVehicleByCommand(data)
             continue
         print(f"{tname} : {data}")
 
 
 def driveVehicleByCommand(command: SendEntity):
+    global DIR_VEL
+    scale = 1000
+    '''
+    根据命令驱动车辆 ↑y+ →x+
+    :param command:
+    :return:
+    '''
     dpx_r, dpy_r = command.instruction['step']['destinationPoint']['pose']['position']['x'], \
         command.instruction['step']['destinationPoint']['pose']['position']['y']
+    dpx_r_cm, dpy_r_cm = dpx_r / scale, dpy_r / scale # 比例缩放
+    if DIR_VEL[0] == 1: # 对准x+
+        pass
+    elif DIR_VEL[0] == -1: # x-
+        pass
+    elif DIR_VEL[1] == 1: # y+
+        pass
+    elif DIR_VEL[1] == -1: # y-
+        pass
 
 
 if __name__ == '__main__':
+
+    pub = None
+
+    if not SIM_ENV:
+        import rospy
+        from geometry_msgs.msg import Twist
+
+        rospy.init_node('turtlebot_teleop')  # 创建ROS节点
+        pub = rospy.Publisher('~cmd_vel', Twist, queue_size=5)  # 创建速度话题发布者，'~cmd_vel'='节点名/cmd_vel'
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
